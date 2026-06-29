@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portifolio</title>
+  <link rel="stylesheet" href="victor.css">
+</head>
+<body>
+    
+ 
+
+  <header class="home">
+  <!-- Home -->
+   <nav class="nav-home">
+   <ul>
+<a href="victor-matheus-alves-felix.html"><li>aSobre Mim</li></a>
+<a href="formacao.html">
+  <li>Formação</li>
+</a>
+<a href="portfolio.html">
+  <li>Portfolio</li>
+</a>
+<a href="contato.html">
+  <li>Contato</li>
+</a>
+   </ul>
+   </nav>
+   </header>
+
+   <!--Sobre mim-->
+<div class="sobre">
+  
+    
+         <h1>portfolio</h1>
+  <a href="http://127.0.0.1:5500/pagina-oferta.html">site ofertas</a>
+       
+ </div>
+
+<!--CONTATO-->
+
+<div class="cont">
+  <h2>Formulário de Contato</h2>
+  <form id="contactForm" novalidate>
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" name="nome">
+      <div id="nomeError" class="error"></div>
+  
+      <label for="email">E-mail:</label>
+      <input type="email" id="email" name="email">
+      <div id="emailError" class="error"></div>
+  
+      <label for="mensagem">Mensagem:</label>
+      <textarea id="mensagem" name="mensagem" rows="4"></textarea>
+      <div id="mensagemError" class="error"></div>
+  
+      <button type="submit">Enviar</button>
+  </form>
+  
+  <div id="successMessage" class="success"></div>
+  
+</div>
+
+<!--JAVASCRIPT-->
+
+<script>
+document.getElementById("contactForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Evita envio real
+
+    // Limpa mensagens de erro
+    document.getElementById("nomeError").textContent = "";
+    document.getElementById("emailError").textContent = "";
+    document.getElementById("mensagemError").textContent = "";
+    document.getElementById("successMessage").textContent = "";
+
+    let nome = document.getElementById("nome").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let mensagem = document.getElementById("mensagem").value.trim();
+    let valid = true;
+
+    // Validação do nome
+    if (nome === "") {
+        document.getElementById("nomeError").textContent = "O campo nome é obrigatório.";
+        valid = false;
+    }
+
+    // Validação do e-mail
+    if (email === "") {
+        document.getElementById("emailError").textContent = "O campo e-mail é obrigatório.";
+        valid = false;
+    } else {
+        // Regex simples para validar formato de e-mail
+        let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+            document.getElementById("emailError").textContent = "Digite um e-mail válido.";
+            valid = false;
+        }
+    }
+
+    // Validação da mensagem
+    if (mensagem === "") {
+        document.getElementById("mensagemError").textContent = "O campo mensagem é obrigatório.";
+        valid = false;
+    }
+
+    // Se tudo estiver válido, simula envio
+    if (valid) {
+        // Limpa campos
+        document.getElementById("contactForm").reset();
+
+        // Exibe mensagem de sucesso
+        document.getElementById("successMessage").textContent = "Mensagem enviada com sucesso!";
+
+        // Também pode usar alert
+        alert("Mensagem enviada com sucesso!");
+    }
+});
+</script>
+</body>
+</html>
